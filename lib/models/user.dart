@@ -54,7 +54,7 @@ class TodoProvider{
   Database db;
   Future open() async{
     var dbpath = await getDatabasesPath();
-    String path = dbpath + "\Account.db";
+    String path = dbpath + "\_Member.db";
     db = await openDatabase(path, version:1,
     onCreate: (Database db , int version) async{
       await db.execute('''
@@ -64,7 +64,7 @@ class TodoProvider{
         $columnPass text not null,
         $columnName text not null,
         $columnAge text not null,
-        $columnQuaot text,
+        $columnQuaot text
         )
       ''');
     });

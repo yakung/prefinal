@@ -3,16 +3,16 @@ import 'package:final_test/ui/home.dart';
 import 'package:flutter/material.dart';
 
 
-class ProfileScreen extends StatefulWidget {
+class Profile extends StatefulWidget {
   final Todo user;
-  ProfileScreen({Key key, this.user}) : super(key: key);
+  Profile({Key key, this.user}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
-    return ProfileScreenState();
+    return ProfileState();
   }
 }
 
-class ProfileScreenState extends State<ProfileScreen> {
+class ProfileState extends State<Profile> {
   final _formkey = GlobalKey<FormState>();
   TextEditingController _id = TextEditingController();
   TextEditingController _name = TextEditingController();
@@ -123,15 +123,6 @@ class ProfileScreenState extends State<ProfileScreen> {
                             if (_quote.text.length > 0) {
                               user.quaot = _quote.text;
                             }
-                            // userProvider.updateUser(myself).then((r) {
-                            //   Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) =>
-                            //           HomeScreen(user: myself),
-                            //     ),
-                            //   );
-                            // });
                             todo.update(user).then((r){
                              Navigator.pushReplacement(
                                 context,

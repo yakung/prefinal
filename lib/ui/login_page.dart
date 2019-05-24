@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'register_page.dart';
 import 'home.dart';
 import '../models/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -30,6 +31,8 @@ class LoginState extends State<Login> {
       });
     });
   }
+  
+  SharedPreferences prefs;
 
   final _formkey = GlobalKey<FormState>();
   TextEditingController ctrlUsername = TextEditingController();
@@ -37,6 +40,7 @@ class LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Form(
         key: _formkey,
         child: ListView(
@@ -91,19 +95,27 @@ class LoginState extends State<Login> {
               padding: const EdgeInsets.all(15.0),
               child: RaisedButton(
                   child: Text("LOGIN"),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formkey.currentState.validate()) {
                       for (int i = 0; i < userlist.length; i++) {
                         if (ctrlUsername.text == userlist[i].user &&
                             ctrlpassword.text == userlist[i].pass) {
                               print("successssssssss");
-                          Navigator.pushReplacement(
+                            prefs = await SharedPreferences.getInstance();
+                            await prefs.setString('name', userlist[i].name);
+                            await prefs.setBool('check', true);
+                            
+                            if(prefs.getBool('check') == true){
+                                                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
                                   Home(user: userlist[i]),
                             ),
                           );
+                            }else{
+                              return "can not log-in";
+                            }
                         }
                         else{
                           return "false";
