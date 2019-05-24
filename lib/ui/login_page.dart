@@ -101,7 +101,7 @@ class LoginState extends State<Login> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  TabDemo(user: userlist[i]),
+                                  Home(user: userlist[i]),
                             ),
                           );
                         }

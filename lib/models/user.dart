@@ -2,13 +2,13 @@ import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 
 
-final String tableTodo = "Account";
+final String tableTodo = "_Member";
 final String columnId = "_id";
 final String columnUser = "_user";
 final String columnPass = "_password";
 final String columnName = "_name";
 final String columnAge = "_age";
-// final String columnQuaot = "_quaot";
+final String columnQuaot = "_quaot";
 
 class Todo{
   int id;
@@ -18,12 +18,12 @@ class Todo{
   String age;
   String quaot;
 
-  Todo({String user, String name, String pass, String age}){
+  Todo({String user, String name, String pass, String age, this.quaot}){
     this.user = user;
     this.pass = pass;
     this.name = name;
     this.age = age;
-    // this.quaot = quaot;
+    this.quaot = quaot;
   }
 
   Map<String, dynamic> toMap(){
@@ -32,7 +32,7 @@ class Todo{
       columnPass :pass,
       columnName :name,
       columnAge: age,
-      // columnQuaot:quaot
+      columnQuaot:quaot
     };
     if(id != null){
       map[columnId] = id;
@@ -45,7 +45,7 @@ class Todo{
     this.pass = map[columnPass];
     this.name = map[columnName];
     this.age = map[columnAge];
-    // this.quaot = map[columnQuaot];
+    this.quaot = map[columnQuaot];
   
   }
 }
@@ -64,6 +64,7 @@ class TodoProvider{
         $columnPass text not null,
         $columnName text not null,
         $columnAge text not null,
+        $columnQuaot text,
         )
       ''');
     });

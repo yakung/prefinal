@@ -1,7 +1,9 @@
+import 'package:final_test/models/user.dart';
 import 'package:flutter/material.dart';
 
-
 class Home extends StatefulWidget {
+  final Todo user;
+  Home({Key key, this.user}) : super(key: key);
   @override
   HomeState createState() {
     return new HomeState();
@@ -13,7 +15,7 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    Todo user = widget.user;
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
@@ -26,30 +28,25 @@ class HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Text("Hello FIRSTNAME LASTNAME"),
-              Text("this is my quote today is my day"),
+              Text("Hello ${user.name}"),
+              Text("this is my ${user.quaot}"),
               Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: RaisedButton(
                     child: Text('PROFILE SETUP'),
-                    color: Theme.of(context).accentColor,
-                    splashColor: Colors.blue,
+                    color: Color(0xff00796b),
                     onPressed: () {},
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: RaisedButton(
                     child: Text('MY FRIENDS'),
-                    color: Theme.of(context).accentColor,
-                    splashColor: Colors.blue,
                     onPressed: () {},
                   )),
               Container(
                   margin: const EdgeInsets.only(top: 20),
                   child: RaisedButton(
                     child: Text('SIGN OUT'),
-                    color: Theme.of(context).accentColor,
-                    splashColor: Colors.blue,
                     onPressed: () {},
                   )),
             ]),

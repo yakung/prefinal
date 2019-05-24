@@ -157,7 +157,8 @@ class Registerstate extends State<Register> {
                           name: _name.text,
                           age: _age.text,
                           pass: _pass.text,
-                          user: _user.text
+                          user: _user.text,
+
                           );
                       todo.insert(data).then((d) {
                         Navigator.pushNamed(context, "/");
@@ -176,7 +177,8 @@ class Registerstate extends State<Register> {
                             name: _name.text,
                             age: _age.text,
                             pass: _pass.text,
-                            user: _user.text);
+                            user: _user.text,
+                            );
                         todo.insert(data).then((d) {
                           Navigator.pushNamed(context, "/");
                           
